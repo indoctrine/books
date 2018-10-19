@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <title>Debugging</title>
+    <link rel="stylesheet" type="text/css" href="bookstyles.css" media="screen" />
+  </head>
+  <body>
+    <form method="post" id="form">
+      <label for="isbn">ISBN:</label> <input type="text" name="isbn" id="isbn" pattern="\d{10}(\d{3})?" placeholder="XXXXXXXXXXXXX"/><br />
+      <label for="author">Author:</label> <input type="text" required name="author" id="author" pattern="[^0-9]+"/><br />
+      <label for="year">Year:</label> <input type="number" name="year" id="year" min="1900" max="2999"/><br />
+      <button type="submit" value="Add Book">Add Book</button>
+    </form>
+    <script>
+      var submitted = document.getElementById("form"); //Get the form
+
+      var check = function(ev){
+        //var value_check = ["author","isbn","year"];
+        //for(i = 0; i < value_check.length; i++){
+          //var elem = document.getElementById(value_check[i]);
+          if(submitted.checkValidity() == false){
+            ev.preventDefault(); //Prevent the form from submitting.
+
+          }
+      }
+      submitted.addEventListener("submit", check);
+    </script>
+  </body>
+</html>
